@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 const about = () => {
   return (
     <div className="w-full h-full bg-black">
@@ -10,8 +12,8 @@ const about = () => {
             promote their art through sneakers.
           </p>
           <p className="pt-10">
-            I remember thinking to myself "I wish there was a website where I
-            could scroll and buy my favourite customz"... Well, here it is.
+            I remember thinking to myself &quot;I wish there was a website where I
+            could scroll and buy my favourite customz&quot;... Well, here it is.
           </p>
         </div>
         <div className="2xl:mt-8 mt-6">
@@ -20,9 +22,12 @@ const about = () => {
       </div>
       <div className="md:w-3/5 w-4/5 mt-8 mx-auto grid grid-cols-3">
         <div className="text-center">
-          <img
-            src="https://www.w3schools.com/howto/img_avatar.png"
+          <Image
             className="2xl:p-10 lg:p-6 rounded-full"
+            src={'https://www.w3schools.com/howto/img_avatar.png'}
+            alt='artist profile'
+            width={200}
+            height={200}
           />
           <div>
             <span className="text-white 2xl:text-4xl text-2xl own-font">D.Arias</span>
@@ -42,9 +47,12 @@ const about = () => {
           </div>
         </div>
         <div className="text-center">
-          <img
-            src="https://www.w3schools.com/howto/img_avatar.png"
+          <Image
             className="2xl:p-10 lg:p-6 rounded-full"
+            src={'https://www.w3schools.com/howto/img_avatar.png'}
+            alt='artist profile'
+            width={200}
+            height={200}
           />
           <div>
             <span className="text-white 2xl:text-4xl text-2xl own-font">Mordegats</span>
