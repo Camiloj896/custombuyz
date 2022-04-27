@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { FaBars, FaTimes, FaShoppingCart } from 'react-icons/fa'
+import { FaBars, FaTimes } from 'react-icons/fa'
+import HeaderItem from './item';
+import HeaderCardItem from './card-item';
 import HeaderOptions from './options';
-import Link from 'next/link';
 import Logo from './../../public/image/Logo_CBZ.png';
 import Image from 'next/image'
 
@@ -18,14 +19,16 @@ const Header = () => {
             <div className='container'>
                 <div className='grid grid-cols-2 px-3 lg:grid-cols-5 xl:grid-cols-3 lg:px-0 lg:gap-x-4'>
                     <div className='hidden lg:block lg:col-span-2 xl:col-span-1 items-menu'>
-                        <ul>
+                        <ul className='flex'>
                             {
                                 HeaderOptions.map((option, i) => {
                                     if (option.leftItem) {
                                         return (
-                                            <li key={i} className='lg:ml-8 lg:my-0 my-7 inline'>
-                                                <a href={option.link} className='onw-header-size hover:text-gray-400 duration-500'>{option.name}</a>
-                                            </li>
+                                            <HeaderItem
+                                                text={option.name}
+                                                link={option.link}
+                                                key={i}
+                                            />
                                         );
                                     }
                                 })
@@ -36,30 +39,26 @@ const Header = () => {
                       <Image
                         src={Logo}
                         alt='image logo'
-                        className='test-image'
+                        width={200}
+                        height={100}
                       />
                     </div>
                     <div className='hidden items-menu lg:flex lg:justify-end lg:col-span-2 xl:col-span-1 lg:mr-5 xl:mr-6 2xl:mr-0'>
-                        <ul>
+                        <ul className='flex w-full'>
                             {
                                 HeaderOptions.map((option, i) => {
                                     if (option.rightItem) {
                                         return (
-                                            <li key={i} className={`lg:ml-8 lg:my-0 my-7 inline ${option.divider ? 'border-l-2 border-gray-300 pl-5' : ''}`}>
-                                                <Link href={option.link}>
-                                                    <a className='onw-header-size hover:text-gray-400 duration-500'>{option.name}</a>
-                                                </Link>
-                                            </li>
+                                            <HeaderItem
+                                                text={option.name}
+                                                link={option.link}
+                                                key={i}
+                                            />
                                         );
                                     }
                                 })
                             }
-                            <li className='lg:ml-8 onw-font-size lg:my-0 my-7 inline'>
-                                <a href={'/'} className='hover:text-gray-400 duration-500'>
-                                    <FaShoppingCart className='inline onw-header-size' />
-                                </a>
-                                <span className='onw-header-size pl-3'>$26544</span>
-                            </li>
+                            <HeaderCardItem />
                         </ul>
                     </div>
                     <div className='block lg:hidden relative'>

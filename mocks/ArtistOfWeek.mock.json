@@ -1,0 +1,63 @@
+{
+    "id": 3,
+    "name": "name",
+    "lastName": "lastname",
+    "city": "city",
+    "email": "test2@gmail.com",
+    "password": "test2",
+    "profileImg": "https://img.freepik.com/foto-gratis/forme-zapatos-corrientes-zapatilla-deporte-aislados-blanco_47469-442.jpg?size=626&ext=jpg",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ullamcorper nunc nisi, ut lacinia purus vehicula at. Curabitur nisi ligula, molestie quis diam quis, tempus gravida ipsum. Sed rhoncus dignissim hendrerit. Suspendisse potenti. Vestibulum eget velit in mi mattis varius. Aliquam fringilla lectus imperdiet sodales ornare",
+    "word": "Lorem Ipsum",
+    "description2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ullamcorper nunc nisi, ut lacinia purus vehicula at. Curabitur nisi ligula, molestie quis diam quis, tempus gravida ipsum. Sed rhoncus dignissim hendrerit. Suspendisse potenti. Vestibulum eget velit in mi mattis varius. Aliquam fringilla lectus imperdiet sodales ornare",
+    "products": [
+        {
+            "id": 1,
+            "product": "product 1",
+            "img": "https://img.freepik.com/foto-gratis/forme-zapatos-corrientes-zapatilla-deporte-aislados-blanco_47469-442.jpg?size=626&ext=jpg",
+            "price": 100,
+            "avalible": true
+        },
+        {
+            "id": 2,
+            "product": "product 2",
+            "img": "https://img.freepik.com/foto-gratis/forme-zapatos-corrientes-zapatilla-deporte-aislados-blanco_47469-442.jpg?size=626&ext=jpg",
+            "price": 200,
+            "avalible": false
+        },
+        {
+            "id": 3,
+            "product": "product 3",
+            "img": "https://img.freepik.com/foto-gratis/forme-zapatos-corrientes-zapatilla-deporte-aislados-blanco_47469-442.jpg?size=626&ext=jpg",
+            "price": 300,
+            "avalible": true
+        },
+        {
+            "id": 4,
+            "product": "product 4",
+            "img": "https://img.freepik.com/foto-gratis/forme-zapatos-corrientes-zapatilla-deporte-aislados-blanco_47469-442.jpg?size=626&ext=jpg",
+            "price": 400,
+            "avalible": false
+        },
+        {
+            "id": 5,
+            "product": "product 5",
+            "img": "https://img.freepik.com/foto-gratis/forme-zapatos-corrientes-zapatilla-deporte-aislados-blanco_47469-442.jpg?size=626&ext=jpg",
+            "price": 500,
+            "avalible": true
+        },
+        {
+            "id": 6,
+            "product": "product 6",
+            "img": "https://img.freepik.com/foto-gratis/forme-zapatos-corrientes-zapatilla-deporte-aislados-blanco_47469-442.jpg?size=626&ext=jpg",
+            "price": 600,
+            "avalible": true
+        },
+        {
+            "id": 7,
+            "product": "product 7",
+            "img": "https://img.freepik.com/foto-gratis/forme-zapatos-corrientes-zapatilla-deporte-aislados-blanco_47469-442.jpg?size=626&ext=jpg",
+            "price": 700,
+            "avalible": false
+        }
+    ]
+}

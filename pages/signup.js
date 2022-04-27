@@ -1,10 +1,16 @@
+import Layout from '../components/Layout/index';
 import RegisterForm from "../components/RegisterForm";
 import Logo from './../public/image/Logo_CBZ.png';
 import Image from 'next/image'
 
 const Signup = () => {
   return (
-    <>
+    <Layout
+      title="Register"
+      description="Register Page"
+      header={false}
+      footer={false}
+    >
       <div className="grid grid-cols-1 lg:grid-cols-2 h-screen">
         <div className="flex justify-center flex-col items-center">
           <RegisterForm />
@@ -21,7 +27,7 @@ const Signup = () => {
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   );
 };
 

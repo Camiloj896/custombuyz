@@ -13,7 +13,7 @@ const HeaderOptions = [
     },
     {
         name: "About",
-        link: "/",
+        link: "/about",
         leftItem: true,
         rightItem: false,
     },

@@ -1,9 +1,11 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useContext } from "react";
 import { FaFileImage } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { TEXT_FIELD, PRICE, WHOLENUMBER } from "../../utils/formRules";
 import { formErrors } from "../../utils/formErrors";
-import Image from 'next/image'
+import SnackbarPortal from "../../utils/snackbarPortal";
+import { GlobalContext } from "../../context/GlobalContext";
+import Image from "next/image";
 
 const NewCreationForm = () => {
   const inputCreation = useRef(null);
@@ -13,6 +15,7 @@ const NewCreationForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const { userState, userDispatch } = useContext(GlobalContext);
 
   const onSubmit = (e) => {
     console.log("submit");
@@ -29,10 +32,10 @@ const NewCreationForm = () => {
 
   return (
     <form
-      className="2xl:w-2/5 xl:w-2/3 lg:w-2/3 md:w-2/3 w-2/3 flex flex-col items-center"
+      className="2xl:w-3/5 xl:w-2/3 lg:w-2/3 md:w-2/3 w-full sm:p-0 p-6 flex flex-col items-center own-font-text"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <span className="text-2xl font-bold mt-20">Decorate your house</span>
+      <span className="text-4xl my-14 own-font">Decorate your house</span>
       <div className="hidden">
         <input
           ref={inputCreation}
@@ -43,7 +46,7 @@ const NewCreationForm = () => {
       </div>
       <div
         id="input-creation"
-        className="w-full flex my-2 mt-10 p-1 self-center place-content-center cursor-pointer shadow-[3px_3px_4px_3px_rgba(0,0,0,0.2)] rounded-lg"
+        className="w-full flex my-2 p-1 self-center place-content-center cursor-pointer py-2 px-3 focus:ring-gray-200 border border-slate-300 rounded-lg text-sm shadow-sm focus:outline-none focus:border-gray-200 focus:ring-1"
         onClick={() => {
           inputCreation.current.click();
         }}
@@ -51,17 +54,17 @@ const NewCreationForm = () => {
         <div className="flex flex-col">
           {creation ? (
             <Image
-              className='h-20 w-40 self-center'
+              className="h-20 w-40 self-center"
               src={creation}
-              alt='image creation'
+              alt="image creation"
             />
           ) : (
             <FaFileImage className="h-16 w-32 p-1 self-center" />
           )}
-          <span className="self-center text-l font-bold pl-2 my-2">
+          <span className="self-center text-md text-black font-bold pl-2 my-2">
             +Add some creationz
           </span>
-          <text className="p-3 mb-2 pb-1 text-xs text-justify	text-gray-500">
+          <text className="px-4 mb-2 pb-1 text-xs text-justify	text-gray-500">
             High quality pictures are ... text text ... High quality pictures
             are ... text text ... High quality pictures are ... text text ...
             High quality pictures are ... text text ... High quality pictures
@@ -70,9 +73,11 @@ const NewCreationForm = () => {
         </div>
       </div>
       <div className="flex flex-col w-full my-2">
-        <span className="text-xl font-bold my-1">Name</span>
+        <label htmlFor="name" className="text-md text-black font-bold mb-1">
+          Name
+        </label>
         <input
-          className="h-10 p-1 shadow-[0px_0px_4px_3px_rgba(0,0,0,0.1)] rounded-lg"
+          className="h-10 py-2 px-3 focus:ring-gray-200 border border-slate-300 rounded-lg text-sm shadow-sm focus:outline-none focus:border-gray-200 focus:ring-1"
           type="text"
           placeholder="Enter a Name"
           {...register("name", {
@@ -90,9 +95,14 @@ const NewCreationForm = () => {
         )}
       </div>
       <div className="flex flex-col w-full my-2">
-        <span className="text-xl font-bold my-1">Description</span>
+        <label
+          htmlFor="description"
+          className="text-md text-black font-bold mb-1"
+        >
+          Description
+        </label>
         <textarea
-          className="h-14 p-1 shadow-[0px_0px_4px_3px_rgba(0,0,0,0.1)] rounded-lg"
+          className="h-14 py-2 px-3 focus:ring-gray-200 border border-slate-300 rounded-lg text-sm shadow-sm focus:outline-none focus:border-gray-200 focus:ring-1"
           type="text"
           placeholder="Add a Description"
           {...register("description", {
@@ -110,9 +120,11 @@ const NewCreationForm = () => {
         )}
       </div>
       <div className="flex flex-col w-full my-2">
-        <span className="text-xl font-bold my-1">Price</span>
+        <label htmlFor="price" className="text-md text-black font-bold mb-1">
+          Price
+        </label>
         <input
-          className="w-1/2 h-10 p-1 shadow-[0px_0px_4px_3px_rgba(0,0,0,0.1)] rounded-lg"
+          className="w-1/2 h-10 py-2 px-3 focus:ring-gray-200 border border-slate-300 rounded-lg text-sm shadow-sm focus:outline-none focus:border-gray-200 focus:ring-1"
           type="text"
           placeholder="Enter a price"
           {...register("price", {
@@ -130,9 +142,11 @@ const NewCreationForm = () => {
         )}
       </div>
       <div className="flex flex-col w-full my-2">
-        <span className="text-xl font-bold my-1">Weeks</span>
+        <label htmlFor="week" className="text-md text-black font-bold mb-1">
+          Weeks
+        </label>
         <input
-          className="w-1/2 h-10 p-1 shadow-[0px_0px_4px_3px_rgba(0,0,0,0.1)] rounded-lg"
+          className="w-1/2 h-10 py-2 px-3 focus:ring-gray-200 border border-slate-300 rounded-lg text-sm shadow-sm focus:outline-none focus:border-gray-200 focus:ring-1"
           type="text"
           placeholder="Weeks"
           {...register("week", {
@@ -150,10 +164,11 @@ const NewCreationForm = () => {
         )}
       </div>
       <input
-        className="flex ml-auto mb-2 text-2xl font-bold cursor-pointer"
+        className="flex ml-auto mb-2 text-3xl font-bold cursor-pointer own-font"
         type="submit"
         value="Let's go!"
       />
+      {userState.error && <SnackbarPortal {...userState.error} />}
     </form>
   );
 };

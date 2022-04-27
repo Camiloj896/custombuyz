@@ -1,0 +1,43 @@
+.HeaderItemList {
+    position: relative;
+    display: inline-block;
+    width: 30%;
+}
+
+.HeaderItem {
+    > span {
+        position: absolute;
+        font-size: 35px;
+        width: 100%;
+        text-align: center;        
+        -webkit-text-fill-color: white;
+        -webkit-text-stroke: 12px black;
+    }
+
+    > span:last-child {
+        font-size: 34px;
+        -webkit-text-stroke: 0px #fffefe;
+        margin-left: 1px;
+    }
+}
+
+.HeaderItemCard {
+    margin-top: 3px;
+    margin-left: 13px;
+
+    > span {
+        position: absolute;
+        font-size: 50px;
+        width: 100%;
+        text-align: center;
+        color: black;
+        cursor: pointer;
+    }
+
+    > span:last-child {
+        font-size: 40px;
+        color: white;        
+        margin-left: 4px;
+        margin-top: 4px;
+    }
+}

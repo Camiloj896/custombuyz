@@ -1,0 +1,38 @@
+.SectionTitle {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 30px;
+
+    > div:nth-child(1) {
+        position: relative;
+        height: 100px;
+        width: 40%;
+        margin: auto;
+
+        > span {
+            position: absolute;
+            font-size: 4.5rem;
+            width: 100%;
+            text-align: center;        
+            -webkit-text-fill-color: white;
+            -webkit-text-stroke: 12px black;
+        }
+
+        > span:last-child {
+            font-size: 4.4rem;
+            -webkit-text-stroke: 0px #fffefe;
+            margin-left: 1px;
+        }
+    }
+
+    > div:nth-child(2) {
+        width: 50%;
+        height: 4px;
+        background-color: #a5a3a3;
+        margin: auto;
+        border-radius: 90%;
+        margin-top: 10px;
+    }
+}

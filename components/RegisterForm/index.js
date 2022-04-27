@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useContext } from "react";
 import { useForm } from "react-hook-form";
 import {
   FaUserAlt,
@@ -10,7 +10,9 @@ import {
 } from "react-icons/fa";
 import { formErrors } from "../../utils/formErrors";
 import { TEXT_FIELD, LINK } from "../../utils/formRules";
-import Image from 'next/image'
+import SnackbarPortal from "../../utils/snackbarPortal";
+import { GlobalContext } from "../../context/GlobalContext";
+import Image from "next/image";
 
 const RegisterForm = () => {
   const inputBanner = useRef(null);
@@ -22,6 +24,7 @@ const RegisterForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const { userState, userDispatch } = useContext(GlobalContext);
 
   const onSubmit = (e) => {
     console.log("submit");
@@ -46,14 +49,14 @@ const RegisterForm = () => {
   };
   return (
     <form
-      className="2xl:w-2/5 xl:w-2/3 lg:w-2/3 md:w-2/3 w-2/3 flex flex-col items-center"
+      className="2xl:w-3/5 xl:w-2/3 lg:w-2/3 md:w-2/3 w-full sm:px-0 px-6 flex flex-col items-center own-font-text"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <span className="text-2xl font-bold mt-24">Make It A Home</span>
+      <span className="text-4xl my-14 own-font">Make It A Home</span>
       <div className="flex items-center">
         <div
           id="input-profile"
-          className="my-2 h-20 w-20 p-2 rounded-full cursor-pointer ring-1 ring-gray-200"
+          className="my-2 h-20 w-20 rounded-full cursor-pointer py-2 px-3 focus:ring-gray-200 border border-slate-300 text-sm shadow-sm focus:outline-none focus:border-gray-200 focus:ring-1"
           onClick={() => {
             inputProfile.current.click();
           }}
@@ -67,15 +70,12 @@ const RegisterForm = () => {
             />
           </div>
           {profile ? (
-            <Image
-              src={profile}
-              alt='image profile'
-            />
+            <Image src={profile} alt="image profile" />
           ) : (
             <FaUserAlt className="h-full w-full p-1" />
           )}
         </div>
-        <span className="text-l font-bold pl-2 my-10">
+        <span className="text-md text-black font-bold pl-2 my-10">
           Add a profile picture
         </span>
       </div>
@@ -89,7 +89,7 @@ const RegisterForm = () => {
       </div>
       <div
         id="input-banner"
-        className="w-full flex my-2 p-1 self-center place-content-center cursor-pointer shadow-[3px_3px_4px_3px_rgba(0,0,0,0.2)] rounded-lg"
+        className="w-full flex my-3 self-center place-content-center cursor-pointer py-2 px-3 focus:ring-gray-200 border border-slate-300 rounded-lg text-sm shadow-sm focus:outline-none focus:border-gray-200 focus:ring-1"
         onClick={() => {
           inputBanner.current.click();
         }}
@@ -99,21 +99,26 @@ const RegisterForm = () => {
             <Image
               src={banner}
               className="h-20 w-40 p-1 self-center"
-              alt='image banner'
+              alt="image banner"
             />
           ) : (
             <FaFileImage className="h-16 w-32 p-1 self-center" />
           )}
 
-          <span className="self-center text-l font-bold pl-2 my-2">
+          <span className="self-center text-md text-black font-bold pl-2 my-2">
             +Add your house banner
           </span>
         </div>
       </div>
       <div className="flex flex-col w-full my-2">
-        <span className="text-xl font-bold my-1">House Name</span>
+        <label
+          htmlFor="housename"
+          className="text-md text-black font-bold mb-1"
+        >
+          House Name
+        </label>
         <input
-          className="h-10 p-1 shadow-[0px_0px_4px_3px_rgba(0,0,0,0.1)] rounded-lg"
+          className="h-10 py-2 px-3 focus:ring-gray-200 border border-slate-300 rounded-lg text-sm shadow-sm focus:outline-none focus:border-gray-200 focus:ring-1"
           type="text"
           placeholder="Choose a House Name"
           {...register("housename", {
@@ -131,9 +136,11 @@ const RegisterForm = () => {
         )}
       </div>
       <div className="flex flex-col w-full my-2">
-        <span className="text-xl font-bold my-1">Bio</span>
+        <label htmlFor="bio" className="text-md text-black font-bold mb-1">
+          Bio
+        </label>
         <textarea
-          className="h-14 p-1 shadow-[0px_0px_4px_3px_rgba(0,0,0,0.1)] rounded-lg"
+          className="h-14 py-2 px-3 focus:ring-gray-200 border border-slate-300 rounded-lg text-sm shadow-sm focus:outline-none focus:border-gray-200 focus:ring-1"
           type="text"
           placeholder="Bio is importante because..."
           {...register("bio", {
@@ -151,9 +158,9 @@ const RegisterForm = () => {
         )}
       </div>
       <div className="flex flex-col w-full my-2">
-        <span className="text-xl font-bold my-1">City</span>
+        <label htmlFor="city" className="text-md text-black font-bold mb-1">City</label>
         <input
-          className="h-10 p-1 shadow-[0px_0px_4px_3px_rgba(0,0,0,0.1)] rounded-lg"
+          className="h-10 py-2 px-3 focus:ring-gray-200 border border-slate-300 rounded-lg text-sm shadow-sm focus:outline-none focus:border-gray-200 focus:ring-1"
           type="text"
           placeholder="Choose your City"
           {...register("city", {
@@ -177,7 +184,7 @@ const RegisterForm = () => {
         <div className="flex my-2 w-full">
           <FaFacebookSquare className="2xl:w-10 2xl:h-10 xl:w-8 xl:h-8 lg:w-8 lg:h-8 md:w-8 md:h-8 w-6 h-6" />
           <input
-            className="mx-2 2xl:w-4/5 xl:w-3/4 lg:w-3/4 md:w-4/5 w-4/5 h-8 p-1 self-center shadow-[0px_0px_4px_3px_rgba(0,0,0,0.1)] rounded-lg"
+            className="mx-2 w-full h-8 p-1 self-center py-2 px-3 focus:ring-gray-200 border border-slate-300 rounded-lg text-sm shadow-sm focus:outline-none focus:border-gray-200 focus:ring-1"
             type="text"
             placeholder="Facebook link"
             {...register("facebook", {
@@ -193,7 +200,7 @@ const RegisterForm = () => {
         <div className="flex my-2 w-full">
           <FaInstagram className="2xl:w-10 2xl:h-10 xl:w-8 xl:h-8 lg:w-8 lg:h-8 md:w-8 md:h-8 w-6 h-6" />
           <input
-            className="mx-2 2xl:w-4/5 xl:w-3/4 lg:w-3/4 md:w-4/5 w-4/5 h-8 p-1 self-center shadow-[0px_0px_4px_3px_rgba(0,0,0,0.1)] rounded-lg"
+            className="mx-2 w-full h-8 p-1 self-center py-2 px-3 focus:ring-gray-200 border border-slate-300 rounded-lg text-sm shadow-sm focus:outline-none focus:border-gray-200 focus:ring-1"
             type="text"
             placeholder="Instagram link"
             {...register("instagram", {
@@ -209,7 +216,7 @@ const RegisterForm = () => {
         <div className="flex my-2 w-full">
           <FaYoutube className="2xl:w-10 2xl:h-10 xl:w-8 xl:h-8 lg:w-8 lg:h-8 md:w-8 md:h-8 w-6 h-6" />
           <input
-            className="mx-2 2xl:w-4/5 xl:w-3/4 lg:w-3/4 md:w-4/5 w-4/5 h-8 p-1 self-center shadow-[0px_0px_4px_3px_rgba(0,0,0,0.1)] rounded-lg"
+            className="mx-2 w-full h-8 p-1 self-center py-2 px-3 focus:ring-gray-200 border border-slate-300 rounded-lg text-sm shadow-sm focus:outline-none focus:border-gray-200 focus:ring-1"
             type="text"
             placeholder="Youtube link"
             {...register("youtube", {
@@ -225,7 +232,7 @@ const RegisterForm = () => {
         <div className="flex my-2 w-full">
           <FaTiktok className="2xl:w-10 2xl:h-10 xl:w-8 xl:h-8 lg:w-8 lg:h-8 md:w-8 md:h-8 w-6 h-6" />
           <input
-            className="mx-2 2xl:w-4/5 xl:w-3/4 lg:w-3/4 md:w-4/5 w-4/5 h-8 p-1 self-center shadow-[0px_0px_4px_3px_rgba(0,0,0,0.1)] rounded-lg"
+            className="mx-2 w-full h-8 p-1 self-center py-2 px-3 focus:ring-gray-200 border border-slate-300 rounded-lg text-sm shadow-sm focus:outline-none focus:border-gray-200 focus:ring-1"
             type="text"
             placeholder="Tiktok link"
             {...register("tiktok", {
@@ -240,10 +247,11 @@ const RegisterForm = () => {
         )}
       </div>
       <input
-        className="flex ml-auto mb-2 text-2xl font-bold cursor-pointer"
+        className="flex ml-auto mb-2 text-3xl font-bold cursor-pointer own-font"
         type="submit"
         value="Next"
       />
+      {userState.error && <SnackbarPortal {...userState.error} />}
     </form>
   );
 };

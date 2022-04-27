@@ -1,0 +1,25 @@
+.ArtistOfWeek {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+
+    > div {
+        width: 30%;
+        margin: 20px;
+    }
+
+    .artistProfile {
+
+        .artistDescription {
+            > div {
+                width: 65%;
+            }
+    
+            > div:first-child {
+                width: 30%;
+            }
+        }
+    
+    }
+    
+}

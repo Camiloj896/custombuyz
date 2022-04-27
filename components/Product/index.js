@@ -4,7 +4,7 @@ import ProductDescription from './../ProductDescription/index';
 const Product = ({ style2 = '2'}) => {
     if (style2 === '1') {
         return (
-            <div className="shadow-md hover:shadow-lg p-5 rounded-md divide-y divide-dashed cursor-pointer">
+            <div className="shadow-md hover:shadow-lg p-5 rounded-md divide-y divide-dashed cursor-pointer own-border-top">
                 <ProductAvatar
                     description="hola"
                     src="https://img.freepik.com/foto-gratis/forme-zapatos-corrientes-zapatilla-deporte-aislados-blanco_47469-442.jpg?size=626&ext=jpg"

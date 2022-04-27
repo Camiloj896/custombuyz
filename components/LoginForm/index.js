@@ -1,34 +1,30 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { EMAIL } from '../../utils/formRules';
-import loginService from '../../services/login';
 import SnackbarPortal from '../../utils/snackbarPortal';
 import { useRouter } from 'next/router';
 import { formErrors } from "../../utils/formErrors";
+import Auth from './../../context/actions/user/auth';
+import { GlobalContext } from '../../context/GlobalContext';
 import Link from 'next/link';
 
 const LoginForm = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const [status , setStatus] = useState();
+    const { userState, userDispatch } = useContext(GlobalContext);
 
     const router = useRouter();
+
+    if (userState.token) {    
+        router.push('/', undefined, { shallow: true })
+    }
 
     const onSubmit = async (data) => {
         const params = {
             email: data.email,
             password: data.password,
         }
-        const response = await loginService(params);
-
-        if (response?.statusCode) {
-            setStatus({
-                snackBarType: 'success',
-                snackBarMessage: 'The user has been created'
-            })
-        } else {
-            router.push('/', undefined, { shallow: true })
-        }
+        Auth()(userDispatch, params);
     };
     
     return (           
@@ -106,7 +102,7 @@ const LoginForm = () => {
                 </Link>
                 </div>
             </div>
-            {status && <SnackbarPortal {...status} />}
+            {userState.error && <SnackbarPortal {...userState.error} />}
         </form>
     )
 }
